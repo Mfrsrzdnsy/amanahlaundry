@@ -29,7 +29,7 @@
                 </thead>
                 <tbody>
                     @foreach ($paket as $p)
-                        <<tr>
+                        <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $p->nama_paket }}</td>
                             <td>{{ $p->jenis }}</td>
@@ -45,64 +45,64 @@
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </td>
-                            </tr>
+                        </tr>
 
-                            <!-- Modal Edit -->
-                            <div class="modal fade" id="edit{{ $p->id }}">
-                                <div class="modal-dialog">
-                                    <form method="POST" action="{{ route('paket.update', $p->id) }}">
-                                        @csrf @method('PUT')
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5>Edit Paket</h5>
-                                            </div>
-                                            <div class="modal-body">
-
-                                                <label>Nama Paket</label>
-                                                <input type="text" name="nama_paket" class="form-control"
-                                                    value="{{ $p->nama_paket }}" required>
-
-                                                <label class="mt-2">Jenis</label>
-                                                <select name="jenis" class="form-control" required>
-                                                    <option value="Kiloan" {{ $p->jenis == 'Kiloan' ? 'selected' : '' }}>
-                                                        Kiloan</option>
-                                                    <option value="Satuan" {{ $p->jenis == 'Satuan' ? 'selected' : '' }}>
-                                                        Satuan</option>
-                                                    <option value="Dry Clean"
-                                                        {{ $p->jenis == 'Dry Clean' ? 'selected' : '' }}>Dry Clean</option>
-                                                </select>
-
-                                                <label class="mt-2">Harga</label>
-                                                <input type="number" name="harga" class="form-control"
-                                                    value="{{ $p->harga }}" required>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                                <button class="btn btn-primary">Simpan</button>
-                                            </div>
+                        <!-- Modal Edit -->
+                        <div class="modal fade" id="edit{{ $p->id }}">
+                            <div class="modal-dialog">
+                                <form method="POST" action="{{ route('paket.update', $p->id) }}">
+                                    @csrf @method('PUT')
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5>Edit Paket</h5>
                                         </div>
-                                    </form>
-                                </div>
-                            </div>
+                                        <div class="modal-body">
 
+                                            <label>Nama Paket</label>
+                                            <input type="text" name="nama_paket" class="form-control"
+                                                value="{{ $p->nama_paket }}" required>
 
-                            <!-- Modal Hapus -->
-                            <div class="modal fade" id="hapus{{ $p->id }}">
-                                <div class="modal-dialog">
-                                    <form method="POST" action="{{ route('paket.destroy', $p->id) }}">
-                                        @csrf @method('DELETE')
-                                        <div class="modal-content">
-                                            <div class="modal-body text-center">
-                                                <p>Hapus paket <b>{{ $p->nama_paket }}</b> ?</p>
-                                            </div>
-                                            <div class="modal-footer justify-content-center">
-                                                <button class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                                <button class="btn btn-danger">Hapus</button>
-                                            </div>
+                                            <label class="mt-2">Jenis</label>
+                                            <select name="jenis" class="form-control" required>
+                                                <option value="Kiloan" {{ $p->jenis == 'Kiloan' ? 'selected' : '' }}>
+                                                    Kiloan</option>
+                                                <option value="Satuan" {{ $p->jenis == 'Satuan' ? 'selected' : '' }}>
+                                                    Satuan</option>
+                                                <option value="Dry Clean" {{ $p->jenis == 'Dry Clean' ? 'selected' : '' }}>
+                                                    Dry Clean</option>
+                                            </select>
+
+                                            <label class="mt-2">Harga</label>
+                                            <input type="number" name="harga" class="form-control"
+                                                value="{{ $p->harga }}" required>
                                         </div>
-                                    </form>
-                                </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                            <button class="btn btn-primary">Simpan</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
+                        </div>
+
+
+                        <!-- Modal Hapus -->
+                        <div class="modal fade" id="hapus{{ $p->id }}">
+                            <div class="modal-dialog">
+                                <form method="POST" action="{{ route('paket.destroy', $p->id) }}">
+                                    @csrf @method('DELETE')
+                                    <div class="modal-content">
+                                        <div class="modal-body text-center">
+                                            <p>Hapus paket <b>{{ $p->nama_paket }}</b> ?</p>
+                                        </div>
+                                        <div class="modal-footer justify-content-center">
+                                            <button class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                            <button class="btn btn-danger">Hapus</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     @endforeach
                 </tbody>
             </table>
