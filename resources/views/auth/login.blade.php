@@ -30,7 +30,7 @@
                                 <div class="alert alert-danger">{{ $errors->first() }}</div>
                             @endif
 
-                            <form action="{{ route('login') }}" method="POST">
+                            <form action="{{ route('login.post') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
                                     <label>Username <span class="login-danger">*</span></label>
