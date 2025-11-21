@@ -22,47 +22,34 @@
 
                     <div class="login-right">
                         <div class="login-right-wrap">
-                            <h1>Welcome</h1>
-                            <p class="account-subtitle">Login to your account</p>
 
-                            {{-- ALERT ERROR --}}
+                            <h1>Welcome Back</h1>
+                            <p class="account-subtitle">Login to continue</p>
+
                             @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    {{ $errors->first() }}
-                                </div>
+                                <div class="alert alert-danger">{{ $errors->first() }}</div>
                             @endif
 
-                            <form method="POST" action="{{ route('login') }}">
+                            <form action="{{ route('login') }}" method="POST">
                                 @csrf
-
                                 <div class="form-group">
-                                    <label>Email <span class="login-danger">*</span></label>
-                                    <input class="form-control" type="email" name="email" required />
-                                    <span class="profile-views"><i class="fas fa-envelope"></i></span>
+                                    <label>Username <span class="login-danger">*</span></label>
+                                    <input class="form-control" type="text" name="username" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Password <span class="login-danger">*</span></label>
-                                    <input class="form-control pass-input" type="password" name="password" required />
-                                    <span class="profile-views feather-eye toggle-password"></span>
+                                    <input class="form-control pass-input" type="password" name="password" required>
                                 </div>
 
-                                <div class="forgotpass">
-                                    <div class="remember-me">
-                                        <label class="custom_check d-inline-flex">
-                                            Remember me
-                                            <input type="checkbox" name="remember">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <button class="btn btn-primary btn-block" type="submit">
-                                        Login
-                                    </button>
-                                </div>
+                                <button class="btn btn-primary btn-block" type="submit">Login</button>
                             </form>
+
+
+                            <div class="text-center">
+                                Don’t have an account?
+                                <a href="{{ route('register') }}">Register</a>
+                            </div>
 
                             <div class="login-or">
                                 <span class="or-line"></span>
@@ -78,6 +65,7 @@
 
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
